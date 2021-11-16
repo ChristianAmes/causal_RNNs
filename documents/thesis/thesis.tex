@@ -1,0 +1,64 @@
+% Preamble
+% ---
+\documentclass[a4paper]{proc}
+
+% Packages
+% ---
+\usepackage{float}
+\restylefloat{table}
+\usepackage[font=small,labelfont=bf,center]{caption}
+\usepackage{amsfonts} 
+\usepackage{amsmath} % Advanced math typesetting
+\usepackage[utf8]{inputenc} % Unicode support (Umlauts etc.)
+\usepackage[english]{babel} % Change hyphenation rules
+\usepackage{hyperref} % Add a link to your document
+\usepackage{graphicx} % Add pictures to your document
+\usepackage{listings} % Source code formatting and highlighting
+\usepackage{multicol}
+\usepackage[svgnames]{xcolor}
+\usepackage{listings}
+\usepackage{slashbox}
+\usepackage{wrapfig}
+\usepackage{multirow}
+
+
+\usepackage[numbib,nottoc]{tocbibind}
+
+
+\begin{document} 
+	
+	\author{Christian Ames\"oder}
+
+\title {RNNs to analyse causality in timeseries for jSDMs}
+
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.15\textwidth]{ur-logo-bildmarke-grau.jpg}\par\vspace{1cm}
+	{\scshape \LARGE University of Regensburg\par}
+	\vspace{1cm}
+	{\scshape\Large Master Thesis\par}
+	\vspace{1.5cm}
+	{\huge\bfseries RNNs to analyse causality in timeseries for jSDMs\par}
+	\vspace{2cm}
+	{\Large\itshape Christian Ames\"oder\par}
+	\vfill
+	supervised by\par
+	Maximilian Pichler and Prof. Dr.~Florian \textsc{Hartig}
+	
+	\vfill
+	
+	second corrector \par
+	Prof. Dr.~Elmar \textsc{Lang}
+	\vfill
+	
+	% Bottom of the page
+	{\large \today\par}
+\end{titlepage}
+
+
+
+	\section{Introduction}
+	
+	\bibliography{research}
+	\bibliographystyle{ieeetr}
+\end{document}
