@@ -37,3 +37,12 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+*.out
+*.blg
+*.bcf
+*.bbl
+*.aux
+*.xml
+*.gz
+documents/thesis/ur-logo-bildmarke-grau.jpg
+*.log
