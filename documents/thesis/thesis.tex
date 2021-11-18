@@ -1,6 +1,6 @@
 % Preamble
 % ---
-\documentclass[a4paper]{proc}
+\documentclass[a4paper]{report}
 
 % Packages
 % ---
@@ -20,7 +20,11 @@
 \usepackage{slashbox}
 \usepackage{wrapfig}
 \usepackage{multirow}
-
+\usepackage[
+backend=bibtex,
+style=authoryear-comp,
+]{biblatex}
+\addbibresource{research.bib}
 
 \usepackage[numbib,nottoc]{tocbibind}
 
@@ -38,7 +42,7 @@
 	\vspace{1cm}
 	{\scshape\Large Master Thesis\par}
 	\vspace{1.5cm}
-	{\huge\bfseries RNNs to analyse causality in timeseries for jSDMs\par}
+	{\huge\bfseries RNNs to analyse causality in time series for jSDMs\par}
 	\vspace{2cm}
 	{\Large\itshape Christian Ames\"oder\par}
 	\vfill
@@ -56,9 +60,26 @@
 \end{titlepage}
 
 
+	\tableofcontents
 
-	\section{Introduction}
+
+	\chapter{Introduction}
 	
-	\bibliography{research}
-	\bibliographystyle{ieeetr}
+	\chapter{Methods}
+	
+	\chapter{Results}
+	\section{Time Series}
+	In this work I define multivariate time series as n variables $X_1,..., X_n$ with k instances each. This results in a matrix $A \in M^(n \times k))$ where row i corresponds to variable $X_i$. In ecology each X represents one taxa included in the study. Since often times environmental variables are also known we can expand our time series with an additional data matrix $B \in M^(l \times n)$ where l is the number of environmental variables available.
+	The goal is to acquire the causality matrix C which, similar to a covariance matrix, contains the causal inferences between all variables.
+	
+	
+	\section{Granger Causality}
+	In time series analysis you say, that variable X Granger causes variable Y if information about past X values improves a prediction of Y \cite{Granger.1969}. 
+	
+	\chapter{Discussion}
+	
+	\chapter{Conclusion}
+	
+	
+	\printbibliography
 \end{document}
