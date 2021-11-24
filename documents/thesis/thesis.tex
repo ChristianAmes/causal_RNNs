@@ -59,27 +59,43 @@ style=authoryear-comp,
 	{\large \today\par}
 \end{titlepage}
 
-
 	\tableofcontents
 
-
-	\chapter{Introduction}
-	
+	%\chapter{Introduction}
 	\chapter{Methods}
 	
-	\chapter{Results}
 	\section{Time Series}
-	In this work I define multivariate time series as n variables $X_1,..., X_n$ with k instances each. This results in a matrix $A \in M^(n \times k))$ where row i corresponds to variable $X_i$. In ecology each X represents one taxa included in the study. Since often times environmental variables are also known we can expand our time series with an additional data matrix $B \in M^(l \times n)$ where l is the number of environmental variables available.
-	The goal is to acquire the causality matrix C which, similar to a covariance matrix, contains the causal inferences between all variables.
+	\textbf{Vector autoregressive (VAR)}\\
+	For time series with T instances \textbf{x} $ = (x_t)_{t\in [1:T]}$ VAR is defined as following:
 	
 	
-	\section{Granger Causality}
-	In time series analysis you say, that variable X Granger causes variable Y if information about past X values improves a prediction of Y \cite{Granger.1969}. 
+	\begin{equation} \label {lasso}
+		x_t = c+ A_1x_{t-1}+...+ A_p x_{t-p}+\epsilon_t
+	\end{equation}
+
 	
-	\chapter{Discussion}
 	
-	\chapter{Conclusion}
+	\section{Granger Causality approach}
+	Granger causality for two time series x and y is defined whether past x values improve a prediction of y or not. (\cite{Granger.1969}). 
+	There have been various approaches to this topic. Approaches relevant to this research project are briefly introduced here.
 	
+	\subsection{Multivariate autoregressive model (MAR)} 
+	A MAR(p), for p $\geq$ 1, model is defined as comparing $\eta_t$ and $\epsilon_t$ in the following two autoregressive models:
+	\begin{align}
+		y_t =& \sum_{i=1}^{p} \alpha_i y_{t-1}+\eta_t, \; \eta_t \sim \mathcal{N}(0,\,\sigma_\eta^{2})\\
+		y_t = &\sum_{i=1}^{p} \alpha_i y_{t-1}+ \sum_{i=1}^{p}\beta_{2i}y_{t-i}+\epsilon_t, \; \epsilon_t \sim \mathcal{N}(0,\,\sigma_\epsilon^{2})
+	\end{align}
+	If $\sigma_\epsilon^{2} \; < \; \sigma_\eta^{2} $ and the difference is statistically significant you conclude, x Granger causes y (\cite{Geweke.1982}).\\
+	
+	\subsection{Neural Granger}
+	There also exist other approaches using Neural Networks such as in \cite{Tank.2020}, where on each time series a predictive neural network is trained and afterwards all input layer weights are jointly generalized using lasso regression. A Granger causal effect is determined here whether all input weights of a specific time series are set to 0 or not, where 0 implies no causal effect. 
+	
+	
+	
+	%\chapter{Results}
+	%\chapter{Discussion}	
+	%\chapter{Conclusion}
+	\chapter{Appendix}
 	
 	\printbibliography
 \end{document}
