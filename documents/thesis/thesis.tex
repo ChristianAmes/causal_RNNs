@@ -61,7 +61,12 @@ style=authoryear-comp,
 
 	\tableofcontents
 
-	%\chapter{Introduction}
+	\chapter{Introduction}
+	Recently the interest in causality in all fields of science has risen. For static data a conclusion whether correlation equals causation is not possible. Therefore a look on time series data is inevitable. In time series analysis plenty of methods have been developed to imply causality from this data. Starting in econometrics, where \cite{Granger.1969} first introduces the so called Granger Causality it is now used in a wide array of fields, such as in econometrics to analyse the stock markets,in neuroscience where it is used in the analysis of electroencephalograms (EEG) as well as in climate research. Similar research is also done in ecology, to understand the underlying structure of an ecological community. The rapid cost decrease of next-generation sequencing lead to environmental DNA being a valid method for generate huge time series data about an ecosystems and its species. 
+	Originating from species distribution models (SDMs, ) which model an ecosystem based on spatial environmental variables, joint SDMs (jSDMs) also consider species-species interaction in the modelling process. 
+	Approaches to correctly model jSDMs include the use of convergent cross maps (CCM, \cite{Sugihara.2012})and Granger Causality methods. However, it seems that CCMs don't provide any significant advantage compared to a simple multivariate autoregressive model for the sake of analysing causal relations (\cite{Barraquand.2021}). The path of using Granger causality to determine causation in time series data seems to be the most promising. Granger causality can be determined in many ways. While traditional methods for jSDMS rely on training GLMMs, recent approaches also suggest the use of Neural Networks (\cite{Montalto.2015}, \cite{Tank.2021}). This seems logical, since Granger causality determination heavily relies on how good one variable can be predicted with another.
+	
+	
 	\chapter{Methods}
 	
 	\section{Time Series}
