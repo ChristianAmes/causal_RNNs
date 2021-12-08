@@ -16,13 +16,12 @@ sim_MAR<- function(n_series=5,mar_p=2,len=100,A_mar= F, density_mar=0.3,sd_mar=0
   
   
   #data array
-  time_series<- array(0,dim=c(n_series,len))
-  time_series[,1:mar_p]<- rnorm(n_series*mar_p,0,sd_initial)
+  time_series<- array(0,dim=c(len, n_series))
+  time_series[1:mar_p,]<- rnorm(n_series*mar_p,0,sd_initial)
   
-  for(j in 1:n_series){
-    for (i in (mar_p+1):len){
-      time_series[j,i] <- sum(A_mar[[j]] * t(time_series[,(i-mar_p):(i-1)])) + rnorm(1,mean=0,sd=sd_noise)
-      
+  for (i in (mar_p+1):len){
+    for(j in 1:n_series){
+      time_series[i,j] <- sum(A_mar[[j]] * time_series[(i-mar_p):(i-1),]) + rnorm(1,mean=0,sd=sd_noise)
       }
   }
   
@@ -30,8 +29,10 @@ sim_MAR<- function(n_series=5,mar_p=2,len=100,A_mar= F, density_mar=0.3,sd_mar=0
   par(mfrow=c(k,1))
   
   for (i in 1:k){
-    plot(time_series[i,],type="l",xlab="",ylab="",main = paste("Time Series ",i))
-    abline(v=mar_p+0.4,col="red",xpd=FALSE)
+    
+    try(plot(time_series[,i],type="l",xlab="",ylab="",main = paste("Time Series ",i)))
+    
+    try(abline(v=mar_p+0.4,col="red",xpd=FALSE))
     }
   
   
