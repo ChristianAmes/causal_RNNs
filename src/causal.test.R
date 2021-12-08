@@ -16,15 +16,10 @@ causal.test <- function(x,p=1,method= "gc.pairwise"){
   cause_mat<- switch(method,
      gc.pairwise = gc.pairwise(x,p,n_series,len),
      gc.conditional = gc.contiditonal(x,p,n_series,len),
-     ccm = ccm(x,p,n_series,len),
+     ccm = gc.ccm(x,p,n_series,len),
      stop(paste(method, "is not a valid method"))
     )
 
-  
-  
-  
-  
-  
   
   return(cause_mat)
 }
@@ -58,7 +53,29 @@ gc.conditional <- function(x,p,n_series,len){
 }
 
 
-ccm<- function (x,p,n_series,len){
+gc.ccm<- function (x,p,n_series,len){
+  
+  x<- data.frame(c(1:len),x)
+  
+  
+  vars = colnames(x[-1])
+  var_pairs = combn(vars, 2) 
+  libSize = paste(nrow(x) - E, nrow(x) - E, 10, collapse = " ")
+  ccm_matrix = array(NA, dim = c(length(vars), length(vars)), dimnames = list(vars,
+                                                                              vars))
+  for (i in 1:ncol(var_pairs)) {
+    ccm_out = CCM(dataFrame = x, columns = var_pairs[1, i], target = var_pairs[2,
+                                                                                    i], libSizes = libSize, Tp = 0, E = E, sample = 100)
+    outVars = names(ccm_out)
+    var_out = unlist(strsplit(outVars[2], ":"))
+    ccm_matrix[var_out[2], var_out[1]] = ccm_out[1, 2]
+    var_out = unlist(strsplit(outVars[3], ":"))
+    ccm_matrix[var_out[2], var_out[1]] = ccm_out[1, 3]
+  }
+  
+  
+  cause_mat<- ccm_matrix
+  
   
   return(cause_mat)
 }
