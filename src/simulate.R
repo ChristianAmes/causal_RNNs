@@ -1,4 +1,4 @@
-sim_MAR<- function(n_series=5,mar_p=2,len=100,A_mar= F, density_mar=0.3,sd_mar=0.3, sd_initial=0.3, sd_noise=0.1){
+sim.mar<- function(n_series=5,mar_p=2,len=100,A_mar= F, density_mar=0.3,sd_mar=0.3, sd_initial=0.3, sd_noise=0.1){
   
   #MAR matrices
   if (is.list(A_mar)){
