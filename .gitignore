@@ -46,3 +46,6 @@ vignettes/*.pdf
 *.gz
 documents/thesis/ur-logo-bildmarke-grau.jpg
 *.log
+documents/thesis/thesis.pdf
+documents/thesis/thesis-blx.bib
+documents/thesis/thesis.toc
