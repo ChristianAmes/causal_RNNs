@@ -34,7 +34,7 @@ gc.pairwise<- function(x,p,n_series,len){
     for(j in 1:n_series){
       if (i!=j){
         pairwise<- lmtest::grangertest(x[,i],x[,j],order=p)
-        cause_mat[i,j]<- pairwise$`Pr(>F)`[2]
+        qcause_mat[i,j]<- pairwise$`Pr(>F)`[2]
       }          
     }
   }
